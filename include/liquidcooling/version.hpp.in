@@ -1,0 +1,21 @@
+#pragma once
+
+// Generated from version.hpp.in by the Liquid Cooling Control build system.
+
+#define LCC_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define LCC_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define LCC_VERSION_PATCH @PROJECT_VERSION_PATCH@
+
+#define LCC_VERSION_STRING "@PROJECT_VERSION@"
+
+namespace liquidcooling {
+
+/// Semantic version of the Liquid Cooling Control runtime, as compiled.
+struct Version final {
+    static constexpr int major = LCC_VERSION_MAJOR;
+    static constexpr int minor = LCC_VERSION_MINOR;
+    static constexpr int patch = LCC_VERSION_PATCH;
+    static constexpr const char* string = LCC_VERSION_STRING;
+};
+
+}  // namespace liquidcooling

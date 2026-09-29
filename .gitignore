@@ -1,0 +1,51 @@
+# Build trees
+build/
+build-*/
+out/
+_deps/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+compile_commands.json
+Testing/
+install/
+*.cmake.user
+
+# MSVC / toolchain
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+.vs/
+*.pdb
+*.ilk
+*.idb
+*.exp
+*.lib
+*.obj
+*.exe
+*.dll
+*.dSYM/
+*.o
+*.a
+*.so
+*.dylib
+
+# Editor / OS
+.idea/
+.vscode/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Local scratch
+scratch/
+*.log
+*.tmp
+*.lccj
+*.lccj.tmp*
