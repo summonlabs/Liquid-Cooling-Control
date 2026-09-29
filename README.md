@@ -233,11 +233,24 @@ counts, mean/p50/p95/p99 latency, throughput and the store location.
 
 ## Build
 
+The default Windows generator is multi-configuration, so the configuration is
+selected per command:
+
 ```
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake -S . -B build
+cmake --build build --config Release
+ctest --test-dir build -C Release --output-on-failure
+```
+
+Single-configuration generators such as Ninja work the same way with the
+configuration chosen at configure time:
+
+```
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ctest --test-dir build --output-on-failure
 ```
+
 
 Options (all default `ON` except ASan):
 
@@ -257,17 +270,21 @@ warning is globally suppressed.
 ## Install and consume
 
 ```
-cmake --install build --prefix <prefix>
+cmake --install build --config Release --prefix <prefix>
 ```
 
-This installs the static library, the public headers and a namespaced CMake
-package. An independent project consumes it:
+With a single-configuration generator, drop `--config Release`. This installs
+the static library, the public headers and a namespaced CMake package. An
+independent project consumes it:
 
 ```
 cmake -S downstream -B build-downstream -DCMAKE_PREFIX_PATH=<prefix>
-cmake --build build-downstream
-./build-downstream/downstream_consumer <store-dir>
+cmake --build build-downstream --config Release
+./build-downstream/Release/downstream_consumer <store-dir>
 ```
+
+With a single-configuration generator the executable is written to
+`build-downstream/downstream_consumer` instead.
 
 `downstream/` is a separate CMake project that uses
 `find_package(LiquidCoolingControl 1.0 REQUIRED CONFIG)`, links
