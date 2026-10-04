@@ -1,7 +1,6 @@
 # Liquid Cooling Control
 
-Vendor-neutral control runtime for liquid cooling, repository 29 of the Data
-Center Control Plane (DCCP) program.
+Vendor-neutral control runtime for liquid cooling.
 
 **Core question.** Given current authority, loop/device generation, interlocks,
 coolant evidence, flow/pressure state, leak state and service obligations, which
